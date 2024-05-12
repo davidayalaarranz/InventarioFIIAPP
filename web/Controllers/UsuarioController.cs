@@ -39,14 +39,13 @@ public class UsuarioController : Controller
         await _context.Usuarios.AddAsync(model);
         await _context.SaveChangesAsync();
 
-        return RedirectToAction("Index");
+        return Content("Operación realizada con éxito");
     }
 
     [HttpGet]
     public async Task<PartialViewResult> Edit(int? id)
     {
         var model = await _context.Usuarios.FirstAsync(u => u.IdUsuario == id);
-
         return PartialView("EditUsuario", model);
     }
 

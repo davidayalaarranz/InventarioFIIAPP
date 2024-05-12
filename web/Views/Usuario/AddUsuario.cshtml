@@ -1,7 +1,7 @@
 @using InventarioFIIAPP.Data.Models
 @model Usuario
 
-<form method="post" asp-controller="usuario" asp-action="create" data-ajax="true" data-ajax-method="post">
+<form method="post" asp-controller="usuario" asp-action="create" data-ajax="true" data-ajax-method="post" data-ajax-success="showSuccessToast" data-ajax-failure="showErrorToast">
     <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

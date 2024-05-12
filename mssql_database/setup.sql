@@ -14,6 +14,7 @@ CREATE TABLE [dbo].[Usuario](
 	[IdUsuario] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [varchar](100) NOT NULL,
 	[Apellidos] [varchar](100) NOT NULL,
+	[Email] [varchar](100) NOT NULL,
  CONSTRAINT [PK_Usuario] PRIMARY KEY CLUSTERED 
 (
 	[IdUsuario] ASC
@@ -22,7 +23,7 @@ CREATE TABLE [dbo].[Usuario](
 GO
 SET IDENTITY_INSERT [dbo].[Usuario] ON 
 
-INSERT [dbo].[Usuario] ([IdUsuario], [Nombre], [Apellidos]) VALUES (1, N'David', N'Ayala')
+INSERT [dbo].[Usuario] ([IdUsuario], [Nombre], [Apellidos], [Email]) VALUES (1, N'David', N'Ayala', N'david.ayala@fiiapp.es')
 SET IDENTITY_INSERT [dbo].[Usuario] OFF
 GO
 USE [master]

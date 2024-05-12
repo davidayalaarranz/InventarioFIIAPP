@@ -16,7 +16,7 @@ public class UsuarioController : Controller
     }
 
     // GET: Movies/Details/5
-    public async Task<IActionResult> Index(string filter)
+    public IActionResult Index(string filter)
     {
         var qry = _context.Usuarios.AsNoTracking().AsQueryable();
         if (!string.IsNullOrWhiteSpace(filter))

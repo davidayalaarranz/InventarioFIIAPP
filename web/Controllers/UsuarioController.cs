@@ -61,4 +61,23 @@ public class UsuarioController : Controller
         }
         return RedirectToAction("Index");
     }
+
+    [HttpGet]
+    public async Task<PartialViewResult> Delete(int id)
+    {
+        var model = await _context.Usuarios.FirstAsync(u => u.IdUsuario == id);
+        return PartialView("DeleteUsuario", model);
+    }
+
+    [HttpPost]
+    public ActionResult Delete(Usuario model)
+    {
+        if (model != null)
+        {
+            Usuario? obj = _context.Usuarios.Find(model.IdUsuario);
+            _context.Usuarios.Remove(obj);
+            _context.SaveChanges();
+        }
+        return RedirectToAction("Index");
+    }
 }

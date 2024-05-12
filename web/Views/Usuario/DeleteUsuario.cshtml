@@ -1,17 +1,30 @@
 @using InventarioFIIAPP.Data.Models
 @model Usuario
 
-<div class="form-group">
-    <div class="mb-3">
-        <label for="inputNombre" class="form-label">Nombre</label>
-        <input type="text" asp-for="Nombre" class="form-control" id="inputNombre">
+<form method="post" asp-controller="usuario" asp-action="delete" data-ajax="true" data-ajax-method="post">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-    <div class="mb-3">
-        <label for="inputNombre" class="form-label">Apellidos</label>
-        <input type="text" asp-for="Apellidos" class="form-control" id="inputApellidos">
+    <div class="modal-body">
+        <div class="form-group">
+            <div class="mb-3">
+                <input type="hidden" asp-for="IdUsuario">
+                <label for="inputNombre" class="form-label">Nombre</label>
+                <input type="text" asp-for="Nombre" class="form-control" id="inputNombre" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="inputNombre" class="form-label">Apellidos</label>
+                <input type="text" asp-for="Apellidos" class="form-control" id="inputApellidos" disabled>
+            </div>
+            <div>
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" asp-for="Email" class="form-control" id="inputEmail" disabled>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="InputEmail" class="form-label">Email</label>
-        <input type="email" asp-for="Email" class="form-control">
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-danger" value="Eliminar"></input>
     </div>
-</div>
+</form>

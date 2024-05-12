@@ -30,7 +30,7 @@ function OpenEditModal(id) {
 }
 
 function OpenDeleteModal(id) {
-    var data = { serialNumber: id };
+    var data = { id: id };
     $.ajax(
         {
             type: 'GET',
@@ -48,7 +48,7 @@ function OpenDeleteModal(id) {
 }
 
 function OpenDetailsModal(id) {
-    var data = { serialNumber: id };
+    var data = { id: id };
     $.ajax(
         {
             type: 'GET',

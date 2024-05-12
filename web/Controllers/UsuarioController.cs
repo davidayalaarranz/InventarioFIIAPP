@@ -16,9 +16,14 @@ public class UsuarioController : Controller
     }
 
     // GET: Movies/Details/5
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string filter)
     {
-        var usuarios = await _context.Usuarios.AsNoTracking().ToListAsync();
+        var qry = _context.Usuarios.AsNoTracking().AsQueryable();
+        if (!string.IsNullOrWhiteSpace(filter))
+        {
+            qry = qry.Where(u => u.Nombre.Contains(filter));
+        }
+        var usuarios = qry;
         return View(usuarios);
     }
 

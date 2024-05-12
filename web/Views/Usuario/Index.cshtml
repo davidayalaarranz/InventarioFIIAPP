@@ -5,14 +5,30 @@
 @model IEnumerable<Usuario>
 
 
-<h2>Index</h2>
-
+<div class="d-inline-flex ">
+    <div class="me-3">
+        <h2>Usuarios</h2>
+    </div>
+    <div>
+        <h2 class="bi bi-person-plus-fill" role="button" onclick="OpenAddModal()"></h2>
+    </div>
+</div>
 <p>
-    @* <a asp-action="Create">Create New</a> *@
-    <button type="button" class="btn btn-primary" onclick="OpenAddModal()">
-        Add employee
-    </button>
+    
 </p>
+<form asp-controller="usuario" asp-action="Index" method="get">
+    <div class="row">
+        <div class="col-3">
+            <input type="text" name="filter" class="form-control" />
+        </div>
+        <div class="col-3">
+            <button type="submit" value="Filter" class="btn btn-primary">
+                <i class="bi bi-filter"></i>
+                Filtrar
+            </button>
+        </div>
+    </div>
+</form>
 
 
 <table class="table">

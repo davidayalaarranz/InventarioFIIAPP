@@ -1,3 +1,4 @@
+@using InventarioFIIAPP.Data.Models
 @{
     ViewData["Title"] = "Movie List";
 }
@@ -8,10 +9,12 @@
 
 <p>
     @* <a asp-action="Create">Create New</a> *@
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary" onclick="OpenAddModal()">
         Add employee
     </button>
 </p>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -41,7 +44,7 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdUsuario">Edit</a> |
+                    <a onclick="OpenEditModal(@item.IdUsuario)">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.IdUsuario">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.IdUsuario">Delete</a>
                 </td>
@@ -50,37 +53,32 @@
     </tbody>
 </table>
 
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- modal placeholders-->
+<div id="modal-edit" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form method="post" asp-controller="employee" asp-action="create">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <div class="mb-3">
-                            <label for="inputNombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="inputNombre">
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputNombre" class="form-label">Apellidos</label>
-                            <input type="text" class="form-control" id="inputApellidos">
-                        </div>
-                        <div class="mb-3">
-                            <label for="InputEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" value="Save changes"></input>
-                </div>
-            </form>
+            <div id='modal-edit-content'></div>
+        </div>
+    </div>
+</div>
+<div id="modal-add" class=" modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='modal-add-content'></div>
+        </div>
+    </div>
+</div>
+<div id="modal-delete" class=" modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='modal-delete-content'></div>
+        </div>
+    </div>
+</div>
+<div id="modal-details" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='modal-details-content'></div>
         </div>
     </div>
 </div>

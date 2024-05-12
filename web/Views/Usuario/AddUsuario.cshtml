@@ -1,0 +1,35 @@
+@using InventarioFIIAPP.Data.Models
+@model Usuario
+
+<form method="post" asp-controller="usuario" asp-action="create" data-ajax="true" data-ajax-method="post">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <div class="mb-3">
+                <label for="inputNombre" class="form-label">Nombre</label>
+                <input type="text" asp-for="Nombre" class="form-control" id="inputNombre">
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label for="inputNombre" class="form-label">Apellidos</label>
+                <input type="text" asp-for="Apellidos" class="form-control" id="inputApellidos">
+                <span asp-validation-for="Apellidos" class="text-danger"></span>
+            </div>
+            <div>
+                <label for="InputEmail" class="form-label">Email</label>
+                <input type="email" asp-for="Email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Save changes"></input>
+    </div>
+</form>
+
+<!-- jQuery validation unobstrusive -->
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

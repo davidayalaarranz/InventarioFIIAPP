@@ -1,0 +1,17 @@
+@using InventarioFIIAPP.Data.Models
+@model Usuario
+
+<div class="form-group">
+    <div class="mb-3">
+        <label for="inputNombre" class="form-label">Nombre</label>
+        <input type="text" asp-for="Nombre" class="form-control" id="inputNombre">
+    </div>
+    <div class="mb-3">
+        <label for="inputNombre" class="form-label">Apellidos</label>
+        <input type="text" asp-for="Apellidos" class="form-control" id="inputApellidos">
+    </div>
+    <div class="mb-3">
+        <label for="InputEmail" class="form-label">Email</label>
+        <input type="email" asp-for="Email" class="form-control">
+    </div>
+</div>

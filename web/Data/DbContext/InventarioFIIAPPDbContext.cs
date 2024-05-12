@@ -1,4 +1,4 @@
-using InventarioFIIAPP.Models;
+using InventarioFIIAPP.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 public class InventarioFIIAPPDbContext: DbContext {
@@ -7,7 +7,7 @@ public InventarioFIIAPPDbContext (DbContextOptions<InventarioFIIAPPDbContext> op
         {
         }
 
-        public DbSet<InventarioFIIAPP.Models.Usuario> Usuarios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 		
 		protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -41,4 +41,24 @@ public class UsuarioController : Controller
 
         return RedirectToAction("Index");
     }
+
+    [HttpGet]
+    public async Task<PartialViewResult> Edit(int? id)
+    {
+        var model = await _context.Usuarios.FirstAsync(u => u.IdUsuario == id);
+
+        return PartialView("EditUsuario", model);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Usuario model)
+    {
+        var record = _context.Usuarios.Single(t => t.IdUsuario == model.IdUsuario);
+        if (record != null)
+        {
+            _context.Entry(record).CurrentValues.SetValues(model);
+            _context.SaveChanges();
+        }
+        return RedirectToAction("Index");
+    }
 }

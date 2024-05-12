@@ -58,9 +58,11 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td class="text-center">
+                    <div class="d-flex flex-row">
                     <i role="button" class="bi bi-button bi-pencil-fill me-2" onclick="OpenEditModal(@item.IdUsuario)" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i> 
                     <i role="button" class="bi bi-button bi-info-circle-fill me-2" onclick="OpenDetailsModal(@item.IdUsuario)" data-bs-toggle="tooltip" data-bs-placement="top" title="Detalles"></i> 
                     <i role="button" class="bi bi-button bi-trash3-fill" onclick="OpenDeleteModal(@item.IdUsuario)" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar"></i>
+                    </div>
                 </td>
             </tr>
         }

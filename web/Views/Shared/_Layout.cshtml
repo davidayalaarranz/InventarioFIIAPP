@@ -64,6 +64,10 @@
     </div>
 </div>
 
+<div class="loader">
+       <img class="loading-image" src="~/images/ajax-loader.svg" alt="loading.." />
+</div>
+
 
     @* <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
@@ -77,6 +81,25 @@
     <script src="~/js/site.js" asp-append-version="true"></script> 
     
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        $(document).ready(function(){
+            var $loading = $('.loader').hide();
+            var timeOutHandler;
+            $(document)
+                .ajaxStart(function () {
+                    timeOutHandler = setTimeout(function(){$loading.show();}, 200);
+                })
+                .ajaxStop(function () {
+                    clearTimeout(timeOutHandler);
+                    $loading.hide();
+                })
+                .ajaxError(function () {
+                    clearTimeout(timeOutHandler);
+                    $loading.hide();
+                });
+        });
+    </script>
 
 </body>
 </html>

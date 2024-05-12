@@ -5,10 +5,26 @@
 
 function ActivarTooltips()
 {
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-    });
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+}
+
+function showSuccessToast (xhr) {
+    var toastElList = [].slice.call(document.querySelectorAll('.toast-success'))
+    var toastList = toastElList.map(function(toastEl) {
+        return new bootstrap.Toast(toastEl)
+    })
+    $('.toast-success > .toast-body').text(xhr);
+    toastList.forEach(toast => toast.show()) 
+}
+
+function showErrorToast (req, status, errorThrown) {
+    var toastElList = [].slice.call(document.querySelectorAll('.toast-error'))
+    var toastList = toastElList.map(function(toastEl) {
+        return new bootstrap.Toast(toastEl)
+    })
+    $('.toast-error > .toast-body').text(req.responseText);
+    toastList.forEach(toast => toast.show()) 
 }
 
 function OpenEditModal(id) {

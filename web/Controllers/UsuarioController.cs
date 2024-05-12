@@ -51,7 +51,7 @@ public class UsuarioController : Controller
     }
 
     [HttpPost]
-    public ActionResult Edit(Usuario model)
+    public IActionResult Edit(Usuario model)
     {
         var record = _context.Usuarios.Single(t => t.IdUsuario == model.IdUsuario);
         if (record != null)
@@ -59,7 +59,7 @@ public class UsuarioController : Controller
             _context.Entry(record).CurrentValues.SetValues(model);
             _context.SaveChanges();
         }
-        return RedirectToAction("Index");
+        return Content("Operación realizada con éxito");
     }
 
     [HttpGet]

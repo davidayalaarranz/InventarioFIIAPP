@@ -20,4 +20,16 @@ public class UsuarioController : Controller
         return View(usuarios);
     }
     
+    [HttpPost]
+    [Route("create")]
+    public IActionResult Create(string name, string apellidos, string email)
+    {
+        var newEmployee = new Usuario
+        {
+            Nombre = name,
+            Apellidos = apellidos,
+            Email = email
+        };
+        return RedirectToAction("Index");
+    }
 }

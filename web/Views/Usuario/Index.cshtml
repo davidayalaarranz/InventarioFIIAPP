@@ -7,41 +7,80 @@
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @* <a asp-action="Create">Create New</a> *@
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add employee
+    </button>
 </p>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nombre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Apellidos)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellidos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdUsuario">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdUsuario">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdUsuario">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellidos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdUsuario">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdUsuario">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdUsuario">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" asp-controller="employee" asp-action="create">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="inputNombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="inputApellidos">
+                        </div>
+                        <div class="mb-3">
+                            <label for="InputEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="Save changes"></input>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
